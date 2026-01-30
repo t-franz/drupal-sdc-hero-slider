@@ -132,7 +132,7 @@
       {% for slide in slides %}
         <li
           class="splide__slide"
-          aria-labelledby="{{slider_id}}--title-{{ loop.index }}"
+          aria-labelledby="{{ slider_id }}--title-{{ loop.index }}"
           >
           <div class="grid">
             <picture class="w-full h-full col-start-1 row-start-1">
@@ -161,7 +161,7 @@
 
             <div class="flex items-center justify-center col-start-1 row-start-1 px-12 py-10 text-center">
               <div class="max-w-3xl text-white drop-shadow text-balance">
-                <h2 id="{{slider_id}}--title-{{ loop.index }}" class="text-xl font-semibold tracking-tight sm:text-3xl md:text-5xl">{{ slide.headline|e }}</h2>
+                <h2 id="{{ slider_id }}--title-{{ loop.index }}" class="text-xl font-semibold tracking-tight sm:text-3xl md:text-5xl">{{ slide.headline|e }}</h2>
                 <p class="mt-4 text-base leading-relaxed md:text-lg">{{ slide.subline|e }}</p>
               </div>
             </div>
