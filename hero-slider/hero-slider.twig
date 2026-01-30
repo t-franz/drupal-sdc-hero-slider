@@ -1,0 +1,173 @@
+{#
+/**
+ * @file
+ * Single Directory Component template for a hero slider.
+ *
+ * Available variables:
+ * - slider_id: Unique ID for the slider.
+ * - autoplay: Boolean indicating if the slider should autoplay.
+ * - slides: An array of slide items, each containing:
+ *   - headline: The title text for the slide.
+ *   - subline: The accompanying text for the slide.
+ *   - image: An associative array with image details:
+ *     - src: The URL of the image.
+ *     - width: The width of the image.
+ *     - height: The height of the image.
+ *     - alt: The alt text for the image.
+ *     - sources: An array of source elements for responsive images, each containing:
+ *       - srcset: The srcset attribute value.
+ *       - type: The MIME type of the image.
+ *       - media: The media query for the source.
+ *
+ */
+#}
+
+{#
+  FOR DEMO PURPOSES ONLY.
+  Remove this block when integrating the component.
+#}
+{% if slides is not defined %}
+  {% set autoplay = FALSE %}
+  {% set slides = [
+    {
+      headline: 'Space for powerful messages',
+      subline: 'Short introductory text for the first slide.',
+      image: {
+        src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=1600&h=900&q=80',
+        width: 1600,
+        height: 900,
+        alt: '',
+        sources: [
+          { srcset:
+            'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=800&h=450&q=80&fm=webp 800w,
+            https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=1600&h=900&q=40&fm=webp 1600w',
+            type: 'image/webp',
+            media: '(min-width: 640px)' },
+          { srcset:
+            'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=800&h=450&q=80',
+            type: 'image/jpeg',
+            media: '(min-width: 640px)' },
+          { srcset:
+            'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=640&h=640&q=80&fm=webp 640w,
+            https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=1278&h=1278&q=30&fm=webp 1278w',
+            type: 'image/webp' },
+          { srcset:
+            'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?fit=crop&w=640&h=640&q=80',
+            type: 'image/jpeg' }
+        ]
+      }
+    },
+    {
+      headline: 'Focus on flexible content',
+      subline: 'Second slide with short accompanying text.',
+      image: {
+        src: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=1600&h=900&q=40',
+        width: 1600,
+        height: 900,
+        alt: '',
+        sources: [
+          { srcset:
+            'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=800&h=450&q=80&fm=webp 800w,
+            https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=1600&h=900&q=40&fm=webp 1600w',
+            type: 'image/webp',
+            media: '(min-width: 640px)' },
+          { srcset:
+            'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=800&h=450&q=80',
+            type: 'image/jpeg',
+            media: '(min-width: 640px)' },
+          { srcset:
+            'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=640&h=640&q=80&fm=webp 640w,
+            https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=1278&h=1278&q=30&fm=webp 1278w',
+            type: 'image/webp' },
+          { srcset:
+            'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=640&h=640&q=80',
+            type: 'image/jpeg' }
+        ]
+      }
+    },
+    {
+      headline: 'Ready for takeoff',
+      subline: 'Third slide with short text that motivates action.',
+      image: {
+        src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=1600&h=900&q=40',
+        width: 1600,
+        height: 900,
+        alt: '',
+        sources: [
+          { srcset:
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=800&h=450&q=80&fm=webp 800w,
+            https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=1600&h=900&q=40&fm=webp 1600w',
+            type: 'image/webp',
+            media: '(min-width: 640px)' },
+          { srcset:
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=800&h=450&q=80',
+            type: 'image/jpeg',
+            media: '(min-width: 640px)' },
+          { srcset:
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=640&h=640&q=80&fm=webp 640w,
+            https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=1278&h=1278&q=30&fm=webp 1278w',
+            type: 'image/webp' },
+          { srcset:
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?fit=crop&w=640&h=640&q=80',
+            type: 'image/jpeg' }
+        ]
+      }
+    }
+  ] %}
+{% endif %}
+{# END DEMO PURPOSES ONLY #}
+
+{% set slider_id = 'hero-slider--' ~ slider_id|default('demo')|clean_id %}
+
+<section
+  id="{{ slider_id }}"
+  class="splide hero-slider"
+  role="region"
+  aria-label="{{ 'Hero Slider'|t }}"
+  data-autoplay="{{ autoplay ? 'true' : 'false' }}"
+  >
+
+  <div class="splide__track">
+    <ul class="splide__list">
+      {% for slide in slides %}
+        <li
+          class="splide__slide"
+          aria-labelledby="{{slider_id}}--title-{{ loop.index }}"
+          >
+          <div class="grid">
+            <picture class="w-full h-full col-start-1 row-start-1">
+              {% if slide.image.sources %}
+                {% for source in slide.image.sources %}
+                  <source
+                    srcset="{{ source.srcset }}"
+                    {% if source.type %}type="{{ source.type }}"{% endif %}
+                    {% if source.media %}media="{{ source.media }}"{% endif %}
+                    sizes="100vw"
+                    >
+                {% endfor %}
+              {% endif %}
+              <img
+                src="{{ slide.image.src }}"
+                alt="{{ slide.image.alt|default('') }}"
+                class="object-cover w-full aspect-square sm:aspect-video"
+                loading="{{ loop.first ? 'eager' : 'lazy' }}"
+                fetchpriority="{{ loop.first ? 'high' : 'auto' }}"
+                width="{{ slide.image.width }}"
+                height="{{ slide.image.height }}"
+                >
+            </picture>
+
+            <div class="col-start-1 row-start-1 bg-black/55" aria-hidden="true"></div>
+
+            <div class="flex items-center justify-center col-start-1 row-start-1 px-12 py-10 text-center">
+              <div class="max-w-3xl text-white drop-shadow text-balance">
+                <h2 id="{{slider_id}}--title-{{ loop.index }}" class="text-xl font-semibold tracking-tight sm:text-3xl md:text-5xl">{{ slide.headline|e }}</h2>
+                <p class="mt-4 text-base leading-relaxed md:text-lg">{{ slide.subline|e }}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

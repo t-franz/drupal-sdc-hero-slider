@@ -1,0 +1,59 @@
+name: Hero Slider
+libraryOverrides:
+  css:
+    component:
+      https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css: { type: external, minified: true }
+  js:
+    https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js: { type: external, minified: true }
+    hero-slider.js: {}
+  dependencies:
+    - core/drupal
+props:
+  type: object
+  required:
+    - slides
+  properties:
+    slider_id:
+      type: string
+    autoplay:
+      type: boolean
+    slides:
+      type: array
+      items:
+        type: object
+        required:
+          - title
+          - text
+          - image
+        properties:
+          headline:
+            type: string
+          subline:
+            type: string
+          image:
+            type: object
+            required:
+              - src
+              - width
+              - height
+            properties:
+              src:
+                type: string
+              alt:
+                type: string
+              width:
+                type: number
+              height:
+                type: number
+              sources:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    srcset:
+                      type: string
+                    type:
+                      type: string
+                    media:
+                      type: string
+
