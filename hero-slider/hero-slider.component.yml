@@ -22,8 +22,8 @@ props:
       items:
         type: object
         required:
-          - title
-          - text
+          - headline
+          - subline
           - image
         properties:
           headline:
